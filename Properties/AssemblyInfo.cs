@@ -23,7 +23,7 @@ using Rhino.PlugIns;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert McNeel & Associates")]
 [assembly: AssemblyProduct("BlockCommander")]
-[assembly: AssemblyCopyright("Copyright © 2014, Robert McNeel & Associates")]
+[assembly: AssemblyCopyright("Copyright © 2018, Robert McNeel & Associates")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyInformationalVersion("2")]
@@ -46,5 +46,5 @@ using Rhino.PlugIns;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.505")]
-[assembly: AssemblyFileVersion("1.0.0.505")]
+[assembly: AssemblyVersion("6.0.*")]
+//[assembly: AssemblyFileVersion("1.0.0.505")]
