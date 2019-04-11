@@ -33,7 +33,7 @@ namespace BlockCommander
 
       SetDefaultImageIndex();
 
-      int selected = m_combo.Items.Add(BlockCommanderTreeView.FilterString(BlockCommanderFilter.All));
+      var selected = m_combo.Items.Add(BlockCommanderTreeView.FilterString(BlockCommanderFilter.All));
       m_combo.Items.Add(BlockCommanderTreeView.FilterString(BlockCommanderFilter.Embedded));
       m_combo.Items.Add(BlockCommanderTreeView.FilterString(BlockCommanderFilter.LinkedAndEmbedded));
       m_combo.Items.Add(BlockCommanderTreeView.FilterString(BlockCommanderFilter.Linked));
@@ -43,29 +43,26 @@ namespace BlockCommander
       m_handlers = new BlockCommanderHandlers(this);
 
       // Create a visible changed event handler
-      this.VisibleChanged += new EventHandler(OnVisibleChanged);
+      VisibleChanged += OnVisibleChanged;
 
       // Create a dispose event handler
-      this.Disposed += new EventHandler(OnDisposed);
+      Disposed += OnDisposed;
     }
 
     /// <summary>
     /// Returns the ID of this panel
     /// </summary>
-    public static System.Guid PanelId
-    {
-      get { return typeof (BlockCommanderPanel).GUID; }
-    }
+    public static Guid PanelId => typeof (BlockCommanderPanel).GUID;
 
-    public BlockCommanderTreeView Tree
-    {
-      get { return m_tree; }
-    }
+    /// <summary>
+    /// Gets the tree control
+    /// </summary>
+    public BlockCommanderTreeView Tree => m_tree;
 
     /// <summary>
     /// Occurs when the System.Windows.Forms.Control.Visible property value changes.
     /// </summary>
-    void OnVisibleChanged(object sender, EventArgs e)
+    private void OnVisibleChanged(object sender, EventArgs e)
     {
       m_handlers.Enable(this.Visible);
     }
@@ -73,7 +70,7 @@ namespace BlockCommander
     /// <summary>
     /// Occurs when the component is disposed by a call to the System.ComponentModel.Component.Dispose() method.
     /// </summary>
-    void OnDisposed(object sender, EventArgs e)
+    private void OnDisposed(object sender, EventArgs e)
     {
       // Clear the user control property on our plug-in
       BlockCommanderPlugIn.Instance.Panel = null;

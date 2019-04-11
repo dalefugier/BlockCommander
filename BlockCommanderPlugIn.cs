@@ -39,9 +39,8 @@ namespace BlockCommander
     /// </summary>
     protected override LoadReturnCode OnLoad(ref string errorMessage)
     {
-      System.Type panel_type = typeof(BlockCommanderPanel);
+      var panel_type = typeof(BlockCommanderPanel);
       Panels.RegisterPanel(this, panel_type, "Blocks", Properties.Resources.BlockCommander);
-
       return LoadReturnCode.Success;
     }
   }
