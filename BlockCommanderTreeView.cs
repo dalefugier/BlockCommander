@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Rhino;
 using Rhino.DocObjects;
@@ -103,6 +104,12 @@ namespace BlockCommander
       m_linked_menu.Items.Add(new ToolStripSeparator());
       m_linked_menu.Items.Add(m_linked_menu_open);
       m_linked_menu.Items.Add(m_linked_menu_explore);
+    }
+
+    protected override void OnHandleCreated(EventArgs e)
+    {
+      base.OnHandleCreated(e);
+      SetWindowTheme(Handle, "explorer", null);
     }
 
     /// <summary>
@@ -810,5 +817,9 @@ namespace BlockCommander
         this.SelectedNode = e.Node;
       }
     }
+
+    [DllImport("uxtheme.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
+    private static extern int SetWindowTheme(IntPtr hwnd, string pszSubAppName, string pszSubIdList);
+
   }
 }
