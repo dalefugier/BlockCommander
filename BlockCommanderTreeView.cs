@@ -455,33 +455,25 @@ namespace BlockCommander
           add = false;
       }
 
-      // If not showing used or unused blocks, show nothing
       if (add)
       {
+        // If not showing used or unused blocks, show nothing
         if (!m_show_used_blocks && !m_show_unused_blocks)
         {
           add = false;
         }
         else if (m_show_used_blocks && m_show_unused_blocks)
         {
-          if (!idef.InUse(0) && (idef.InUse(1) || idef.InUse(2)))
-            add = false;
+          // Do nothing...
         }
         else if (m_show_used_blocks && !idef.InUse(0))
         {
-          // If only showing used blocks, if the block is not
-          // used at top level, don't show it.
-          if (!idef.InUse(0))
-            add = false;
+          add = false;
         }
-        else if (m_show_unused_blocks)
+        else if (m_show_unused_blocks && idef.InUse(0))
         {
-          // If only showing unused blocks, if the block is used
-          // in any way, don't show it.
-          if (idef.InUse(0) || idef.InUse(1) || idef.InUse(2))
-            add = false;
+          add = false;
         }
-
       }
 
       return add;
